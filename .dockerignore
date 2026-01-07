@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtualenv
+.venv/
+venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Editor / OS files
+.env
+.git
+.ipynb_checkpoints/
+*.swp
+*.swo
+
+# Tests
+.pytest_cache/
+
+# Logs
+*.log
