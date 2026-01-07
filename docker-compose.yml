@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # MongoDB for Audit Logging & User History
+  mongo:
+    image: mongo:latest
+    container_name: coderefine_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    networks:
+      - ai_net
+
+  # Redis Stack for Vector Search & Caching
+  redis:
+    image: redis/redis-stack-server:latest
+    container_name: coderefine_redis
+    ports:
+      - "6379:6379"
+      - "8001:8001"  # RedisInsight (GUI) if using full stack image, purely optional here
+    volumes:
+      - redis_data:/data
+    networks:
+      - ai_net
+
+volumes:
+  mongo_data:
+  redis_data:
+
+networks:
+  ai_net:
+    driver: bridge
