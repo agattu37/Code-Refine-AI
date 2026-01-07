@@ -8,6 +8,11 @@ app = FastAPI(title="CodeRefine AI Core", version="0.1.0")
 async def root():
     return {"status": "active", "service": "CodeRefine AI"}
 
+@app.get("/health")
+async def health():
+    """Lightweight health check for platform readiness/liveness probes."""
+    return {"status": "ok", "service": "CodeRefine AI"}
+
 @app.post("/refactor", response_model=RefactorResponse)
 async def refactor_code(payload: RefactorRequest):
     """

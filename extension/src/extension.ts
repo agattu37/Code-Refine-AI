@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
         }, async () => {
             try {
                 // 1. Call Backend
-                const response = await axios.post<RefactorResponse>('http://127.0.0.1:8000/refactor', {
+                const response = await axios.post<RefactorResponse>('https://code-refine-ai.onrender.com/refactor', {
                     code: selectedText,
                     language: document.languageId,
                     instruction: "Refactor this code."
